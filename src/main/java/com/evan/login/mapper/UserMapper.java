@@ -23,4 +23,11 @@ public interface UserMapper {
      * @return
      */
     User findById(Integer id);
+
+    /**
+     * 注册新用户
+     * @param user
+     * @return
+     */
+    Integer addUser(User user);
 }

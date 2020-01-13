@@ -6,6 +6,8 @@ import com.evan.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 /**
  * @author cai
  */
@@ -21,5 +23,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Integer id) {
         return null;
+    }
+
+    @Override
+    public Boolean isExist(String username) {
+        if(userMapper.findByName(username)==null){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public Integer register(User user) {
+        user.setGmtCreate(LocalDateTime.now());
+        user.setGmtModified(LocalDateTime.now());
+        return userMapper.addUser(user);
     }
 }

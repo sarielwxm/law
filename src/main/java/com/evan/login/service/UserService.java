@@ -22,4 +22,18 @@ public interface UserService {
      * @return
      */
     User findById(Integer id);
+
+    /**
+     * 判断是否存在相同用户
+     * @param username
+     * @return
+     */
+    Boolean isExist(String username);
+
+    /**
+     * 注册用户
+     * @param user
+     * @return
+     */
+    Integer register(User user);
 }
