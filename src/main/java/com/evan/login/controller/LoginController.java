@@ -1,7 +1,9 @@
 package com.evan.login.controller;
 
 import com.evan.login.domain.User;
+import com.evan.login.mapper.UserMapper;
 import com.evan.login.result.Result;
+import com.evan.login.service.UserRoleService;
 import com.evan.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRoleService userRoleService;
     @CrossOrigin
     @PostMapping(value = "api/login")
     public Result login(@RequestBody User requestUser) {
@@ -28,7 +32,16 @@ public class LoginController {
         if(!requestUser.getPassword().equals(dbUser.getPassword())){
             return new Result(602);
         }
-            return new Result(200);
+            Integer roleId=userRoleService.findRoleId(dbUser.getUserId());
+            if(roleId==1){
+                return new Result(201);
+            }else if(roleId==2){
+                return new Result(202);
+            }else if(roleId==3){
+                return new Result(203);
+            }
+                return new Result(200);
+
 
     }
     @CrossOrigin

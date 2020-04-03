@@ -9,8 +9,6 @@ public class User {
 
     private Integer userId;
 
-    private String roleId;
-
     private String username;
 
     private String password;
@@ -41,14 +39,6 @@ public class User {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public String getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
     }
 
     public String getUsername() {
