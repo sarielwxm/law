@@ -1,8 +1,11 @@
 package com.evan.login.mapper;
 
 import com.evan.login.domain.User;
+import com.evan.login.domain.UserMessage;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author cai
@@ -30,4 +33,20 @@ public interface UserMapper {
      * @return
      */
     Integer addUser(User user);
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    Integer updateUser(User user);
+
+    /**
+     * 根据userid删除用户
+     * @param userId
+     * @return
+     */
+    Integer deleteUser(Integer userId);
+
+    List<UserMessage> getUserList();
 }

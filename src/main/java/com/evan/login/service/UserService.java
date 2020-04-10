@@ -1,7 +1,11 @@
 package com.evan.login.service;
 
 import com.evan.login.domain.User;
+import com.evan.login.domain.UserMessage;
+import com.evan.login.domain.UserMessagePojo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -36,4 +40,10 @@ public interface UserService {
      * @return
      */
     Integer register(User user);
+
+    Integer updateUser(User user);
+
+    Integer deleteUser(Integer userId);
+
+    List<UserMessagePojo> getUserList();
 }

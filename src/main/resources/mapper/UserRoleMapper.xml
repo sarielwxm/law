@@ -5,4 +5,17 @@
     <select id="findRoleId" parameterType="Integer" resultType="Integer">
         select rid from admin_user_role where uid=#{uid}
     </select>
+
+    <insert id="addRole" parameterType="Integer">
+        insert into admin_user_role(uid,rid)
+        values(#{uid},0)
+    </insert>
+
+    <update id="updateRoleId" parameterType="Role">
+        update admin_user_role set rid=#{rid} where uid=#{uid}
+    </update>
+
+    <delete id="deleteRole" parameterType="Integer">
+        delete from admin_user_role where uid=#{uid}
+    </delete>
 </mapper>

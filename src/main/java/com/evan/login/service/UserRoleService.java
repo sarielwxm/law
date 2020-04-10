@@ -1,6 +1,7 @@
 package com.evan.login.service;
 
 
+import com.evan.login.domain.Role;
 import org.springframework.stereotype.Service;
 /**
  * @author cai
@@ -13,4 +14,20 @@ public interface UserRoleService {
      * @return
      */
     Integer findRoleId(Integer uid);
+
+    /**
+     * 更新用户角色
+     * @param role
+     * @return
+     */
+    Integer updateRole(Role role);
+
+    /**
+     * 给用户添加角色
+     * @param uid
+     * @return
+     */
+    Integer addRole(Integer uid);
+
+    Integer deleteRole(Integer uid);
 }

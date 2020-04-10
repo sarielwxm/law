@@ -58,6 +58,8 @@ public class LoginController {
         if(success==0){
             return new Result(611);
         }
+        System.out.println(userService.findByName(username).getUserId());
+        userRoleService.addRole(userService.findByName(username).getUserId());
         return new Result(200);
     }
 }

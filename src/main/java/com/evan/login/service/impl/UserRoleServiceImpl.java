@@ -1,5 +1,6 @@
 package com.evan.login.service.impl;
 
+import com.evan.login.domain.Role;
 import com.evan.login.mapper.UserRoleMapper;
 import com.evan.login.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,4 +14,21 @@ public class UserRoleServiceImpl implements UserRoleService {
     public Integer findRoleId(Integer uid) {
         return userRoleMapper.findRoleId(uid);
     }
+
+    @Override
+    public Integer updateRole(Role role) {
+        return userRoleMapper.updateRoleId(role);
+    }
+
+    @Override
+    public Integer addRole(Integer uid) {
+        return userRoleMapper.addRole(uid);
+    }
+
+    @Override
+    public Integer deleteRole(Integer uid) {
+        return userRoleMapper.deleteRole(uid);
+    }
+
+
 }

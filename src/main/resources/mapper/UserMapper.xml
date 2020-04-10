@@ -14,4 +14,31 @@
         insert into user(username,password,mobile,email,gmt_create,gmt_modified)
         values(#{username},#{password},#{mobile},#{email},#{gmtCreate},#{gmtModified})
     </insert>
+
+    <update id="updateUser" parameterType="User" >
+        update user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userId!=null">user_id=#{userId},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="username!=null">username=#{username},</if>
+            <if test="avatar!=null">avatar=#{avatar},</if>
+            <if test="gender!=null">gender=#{gender},</if>
+            <if test="birthday!=null">birthday=#{birthday},</if>
+            <if test="mobile!=null">mobile=#{mobile},</if>
+            <if test="email!=null">email=#{email},</if>
+            <if test="gmtCreate!=null">gmt_create=#{gmtCreate},</if>
+            <if test="gmtModified!=null">gmt_modified=#{gmtModified},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="isDeleted!=null">is_deleted=#{isDeleted},</if>
+        </trim>
+        WHERE user_id=#{userId} and is_deleted &lt;&gt; 1
+    </update>
+
+    <update id="deleteUser" parameterType="Integer">
+        update user set is_deleted=1 where user_id=#{userId}
+    </update>
+
+    <select id="getUserList" resultType="UserMessage">
+        select user_id,username,avatar,gender,birthday,mobile,email from user where is_deleted &lt;&gt; 1
+    </select>
 </mapper>
