@@ -62,8 +62,9 @@ public class UserServiceImpl implements UserService {
     public List<UserMessagePojo> getUserList() {
         List<UserMessage> userMessages=userMapper.getUserList();
         List<UserMessagePojo> list=new ArrayList<>();
-        UserMessagePojo userMessagePojo=new UserMessagePojo();
+        System.out.println(userMessages.size());
         for(int i=0;i<userMessages.size();i++){
+            UserMessagePojo userMessagePojo=new UserMessagePojo();
            userMessagePojo.setUserId(userMessages.get(i).getUserId());
            userMessagePojo.setAvatar(userMessages.get(i).getAvatar());
            userMessagePojo.setBirthday(userMessages.get(i).getBirthday());
@@ -79,6 +80,8 @@ public class UserServiceImpl implements UserService {
                s="法务工作者";
            }else if(roleId==3){
                s="政府工作人员";
+           }else if(roleId==1){
+               s="管理员";
            }
            userMessagePojo.setRoles(s);
            list.add(userMessagePojo);

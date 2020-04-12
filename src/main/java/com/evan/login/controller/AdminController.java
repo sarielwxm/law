@@ -16,7 +16,8 @@ public class AdminController {
     @Autowired
     private UserRoleService userRoleService;
 
-    @PutMapping("/admin/user")
+    @CrossOrigin
+    @PutMapping("api/admin/user")
     public Result updateUser(@RequestBody UserPojo userPojo){
         User user=new User();
         user.setUserId(userPojo.getUserId());
@@ -41,7 +42,8 @@ public class AdminController {
         return new Result(501);//更新失败
     }
 
-    @DeleteMapping("/admin/user")
+    @CrossOrigin
+    @DeleteMapping("api/admin/user")
     public Result deleteUser(@RequestParam Integer userId){
         Integer a=userService.deleteUser(userId);
         Integer b=userRoleService.deleteRole(userId);
@@ -51,7 +53,8 @@ public class AdminController {
         return new Result(502);//删除失败
     }
 
-    @GetMapping("/admin/users")
+    @CrossOrigin
+    @GetMapping("api/admin/user")
     public List<UserMessagePojo> getUserList(){
         return userService.getUserList();
 
