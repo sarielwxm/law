@@ -6,8 +6,8 @@ import com.evan.login.service.UserRoleService;
 import com.evan.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 @RestController
 public class AdminController {
@@ -58,5 +58,11 @@ public class AdminController {
     public List<UserMessagePojo> getUserList(){
         return userService.getUserList();
 
+    }
+
+    @CrossOrigin
+    @GetMapping("api/admin/role")
+    public List<Name> getRoleList(){
+        return userRoleService.getRoleList();
     }
 }

@@ -18,4 +18,8 @@
     <delete id="deleteRole" parameterType="Integer">
         delete from admin_user_role where uid=#{uid}
     </delete>
+
+    <select id="getRoleList" resultType="Name">
+            select nameZh from admin_role
+    </select>
 </mapper>

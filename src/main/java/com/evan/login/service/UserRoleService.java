@@ -1,8 +1,12 @@
 package com.evan.login.service;
 
 
+import com.evan.login.domain.Name;
 import com.evan.login.domain.Role;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 /**
  * @author cai
  */
@@ -30,4 +34,6 @@ public interface UserRoleService {
     Integer addRole(Integer uid);
 
     Integer deleteRole(Integer uid);
+
+    List<Name> getRoleList();
 }

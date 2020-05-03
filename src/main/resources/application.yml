@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/law?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
-    username: root
-    password: cai123
+    url: jdbc:mysql://handsomeyida.xyz:3306/law?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
+    username: law
+    password: 666555
 mybatis:
   #domain对象的包
   type-aliases-package: com.evan.login.domain

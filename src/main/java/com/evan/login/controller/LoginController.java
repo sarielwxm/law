@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
+
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author cai
  */
@@ -21,7 +24,7 @@ public class LoginController {
     private UserRoleService userRoleService;
     @CrossOrigin
     @PostMapping(value = "api/login")
-    public Result login(@RequestBody User requestUser) {
+    public Result login(@RequestBody User requestUser, HttpServletRequest httpServletRequest) {
         // 对 html 标签进行转义，防止 XSS 攻击
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
@@ -33,6 +36,8 @@ public class LoginController {
             return new Result(602);
         }
             Integer roleId=userRoleService.findRoleId(dbUser.getUserId());
+            httpServletRequest.getSession().setAttribute("username",username);
+            httpServletRequest.getSession().setAttribute("roleId",roleId);
             if(roleId==1){
                 return new Result(201);
             }else if(roleId==2){

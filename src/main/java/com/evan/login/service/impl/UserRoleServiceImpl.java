@@ -1,10 +1,13 @@
 package com.evan.login.service.impl;
 
+import com.evan.login.domain.Name;
 import com.evan.login.domain.Role;
 import com.evan.login.mapper.UserRoleMapper;
 import com.evan.login.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserRoleServiceImpl implements UserRoleService {
@@ -28,6 +31,11 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Override
     public Integer deleteRole(Integer uid) {
         return userRoleMapper.deleteRole(uid);
+    }
+
+    @Override
+    public List<Name> getRoleList() {
+        return userRoleMapper.getRoleList();
     }
 
 

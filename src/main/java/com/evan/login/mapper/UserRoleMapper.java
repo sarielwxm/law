@@ -1,8 +1,11 @@
 package com.evan.login.mapper;
 
+import com.evan.login.domain.Name;
 import com.evan.login.domain.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author cai
@@ -37,4 +40,6 @@ public interface UserRoleMapper {
      * @return
      */
     Integer deleteRole(Integer uid);
+
+    List<Name> getRoleList();
 }
