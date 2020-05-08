@@ -69,10 +69,14 @@ public class LoginController {
 
     @CrossOrigin
     @PostMapping(value = "api/getRole")
-    public RoleResult getRoleId(@RequestParam String username){
+    public RoleResult getRoleId(HttpServletRequest request)throws Exception{
+
+        request.setCharacterEncoding("UTF-8");
+        String username = request.getParameter("username");// 获取用户名
+        // System.out.println(username);
         User dbUser=userService.findByName(username);
         Integer roleId=userRoleService.findRoleId(dbUser.getUserId());
-        return  new RoleResult(roleId);
+        return new RoleResult(roleId);
     }
 }
 
