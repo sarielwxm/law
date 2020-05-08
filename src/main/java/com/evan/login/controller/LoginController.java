@@ -3,6 +3,7 @@ package com.evan.login.controller;
 import com.evan.login.domain.User;
 import com.evan.login.mapper.UserMapper;
 import com.evan.login.result.Result;
+import com.evan.login.result.RoleResult;
 import com.evan.login.service.UserRoleService;
 import com.evan.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class LoginController {
     private UserRoleService userRoleService;
     @CrossOrigin
     @PostMapping(value = "api/login")
-    public Result login(@RequestBody User requestUser, HttpServletRequest httpServletRequest) {
+    public Result login(@RequestBody User requestUser) {
         // 对 html 标签进行转义，防止 XSS 攻击
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
@@ -36,8 +37,6 @@ public class LoginController {
             return new Result(602);
         }
             Integer roleId=userRoleService.findRoleId(dbUser.getUserId());
-            httpServletRequest.getSession().setAttribute("username",username);
-            httpServletRequest.getSession().setAttribute("roleId",roleId);
             if(roleId==1){
                 return new Result(201);
             }else if(roleId==2){
@@ -66,6 +65,14 @@ public class LoginController {
         System.out.println(userService.findByName(username).getUserId());
         userRoleService.addRole(userService.findByName(username).getUserId());
         return new Result(200);
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "api/getRole")
+    public RoleResult getRoleId(@RequestParam String username){
+        User dbUser=userService.findByName(username);
+        Integer roleId=userRoleService.findRoleId(dbUser.getUserId());
+        return  new RoleResult(roleId);
     }
 }
 
