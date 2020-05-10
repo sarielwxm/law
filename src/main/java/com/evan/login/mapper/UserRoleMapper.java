@@ -42,4 +42,8 @@ public interface UserRoleMapper {
     Integer deleteRole(Integer uid);
 
     List<Name> getRoleList();
+
+    List<Integer> getRolePid(Integer roleId);
+
+    String getPermission(Integer pid);
 }

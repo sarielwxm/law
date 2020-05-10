@@ -22,4 +22,11 @@
     <select id="getRoleList" resultType="Name">
             select nameZh from admin_role
     </select>
+    <select id="getRolePid" parameterType="Integer" resultType="Integer">
+            select pid from role_permission where rid=#{roleId}
+    </select>
+    <select id="getPermission" parameterType="Integer" resultType="String">
+            select permission from permission where id=#{pid}
+    </select>
+
 </mapper>

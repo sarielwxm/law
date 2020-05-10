@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author cai
@@ -77,6 +78,14 @@ public class LoginController {
         User dbUser=userService.findByName(username);
         Integer roleId=userRoleService.findRoleId(dbUser.getUserId());
         return new RoleResult(roleId);
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "api/getPermission")
+    public List<String> getPermission(@RequestParam String username){
+        User dbUser=userService.findByName(username);
+        Integer roleId=userRoleService.findRoleId(dbUser.getUserId());
+        return userRoleService.getPermission(roleId);
     }
 }
 

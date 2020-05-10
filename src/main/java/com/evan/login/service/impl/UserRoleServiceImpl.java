@@ -7,6 +7,7 @@ import com.evan.login.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,6 +37,17 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Override
     public List<Name> getRoleList() {
         return userRoleMapper.getRoleList();
+    }
+
+    @Override
+    public List<String> getPermission(Integer roleId) {
+        List<Integer> pids=userRoleMapper.getRolePid(roleId);
+        List<String> permissions=new ArrayList<>();
+        for(int pid:pids){
+            String permission=userRoleMapper.getPermission(pid);
+            permissions.add(permission);
+        }
+        return permissions;
     }
 
 

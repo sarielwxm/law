@@ -36,4 +36,6 @@ public interface UserRoleService {
     Integer deleteRole(Integer uid);
 
     List<Name> getRoleList();
+
+    List<String> getPermission(Integer roleId);
 }
